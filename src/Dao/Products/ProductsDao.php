@@ -10,7 +10,7 @@ class ProductsDao
     {
         $pdo = Database::getConnection();
         $stmt = $pdo->query(
-            "SELECT p.prodcod, p.proddsc, p.proddet, p.prodprecio, p.prodstock, p.prodest, c.catdsc
+            "SELECT p.prodcod, p.proddsc, p.proddet, p.prodprecio, p.prodstock, p.prodimg, p.prodest, p.catcod, c.catdsc
              FROM producto p
              INNER JOIN categoria c ON c.catcod = p.catcod
              ORDER BY p.proddsc"
@@ -33,12 +33,12 @@ class ProductsDao
         return $pdo->query("SELECT * FROM categoria WHERE catest = 'ACT' ORDER BY catdsc")->fetchAll();
     }
 
-    public static function insertProduct(string $proddsc, string $proddet, int $catcod, float $prodprecio, int $prodstock): int
+    public static function insertProduct(string $proddsc, string $proddet, int $catcod, float $prodprecio, int $prodstock, ?string $prodimg): int
     {
         $pdo = Database::getConnection();
         $stmt = $pdo->prepare(
-            "INSERT INTO producto (proddsc, proddet, catcod, prodprecio, prodstock, prodest, prodfching)
-             VALUES (:proddsc, :proddet, :catcod, :prodprecio, :prodstock, 'ACT', NOW())"
+            "INSERT INTO producto (proddsc, proddet, catcod, prodprecio, prodstock, prodimg, prodest, prodfching)
+             VALUES (:proddsc, :proddet, :catcod, :prodprecio, :prodstock, :prodimg, 'ACT', NOW())"
         );
         $stmt->execute([
             "proddsc" => $proddsc,
@@ -46,26 +46,31 @@ class ProductsDao
             "catcod" => $catcod,
             "prodprecio" => $prodprecio,
             "prodstock" => $prodstock,
+            "prodimg" => $prodimg,
         ]);
         return (int) $pdo->lastInsertId();
     }
 
-    public static function updateProduct(int $prodcod, string $proddsc, string $proddet, int $catcod, float $prodprecio, int $prodstock): void
+    public static function updateProduct(int $prodcod, string $proddsc, string $proddet, int $catcod, float $prodprecio, int $prodstock, ?string $prodimg): void
     {
         $pdo = Database::getConnection();
-        $stmt = $pdo->prepare(
-            "UPDATE producto
-             SET proddsc = :proddsc, proddet = :proddet, catcod = :catcod, prodprecio = :prodprecio, prodstock = :prodstock
-             WHERE prodcod = :prodcod"
-        );
-        $stmt->execute([
+        $sql = "UPDATE producto
+                SET proddsc = :proddsc, proddet = :proddet, catcod = :catcod, prodprecio = :prodprecio, prodstock = :prodstock";
+        $params = [
             "proddsc" => $proddsc,
             "proddet" => $proddet,
             "catcod" => $catcod,
             "prodprecio" => $prodprecio,
             "prodstock" => $prodstock,
             "prodcod" => $prodcod,
-        ]);
+        ];
+        if ($prodimg !== null) {
+            $sql .= ", prodimg = :prodimg";
+            $params["prodimg"] = $prodimg;
+        }
+        $sql .= " WHERE prodcod = :prodcod";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute($params);
     }
 
     public static function deactivateProduct(int $prodcod): void

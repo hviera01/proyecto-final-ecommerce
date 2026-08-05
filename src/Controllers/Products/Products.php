@@ -28,6 +28,13 @@ class Products extends PrivateController
         $this->product_DEL = $this->isFeatureAuthorized("product_DEL");
         $this->product_INS = $this->isFeatureAuthorized("product_INS");
         $this->products = ProductsDao::getAllProducts();
+
+        foreach ($this->products as &$producto) {
+            $producto["hasImage"] = !empty($producto["prodimg"]);
+            $producto["placeholderLetter"] = strtoupper(substr((string) $producto["proddsc"], 0, 1));
+            $producto["placeholderClass"] = "ph-" . ((int) $producto["catcod"] % 4);
+        }
+        unset($producto);
     }
 
     private function setParamsToDataView(): void

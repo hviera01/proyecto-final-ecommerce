@@ -72,6 +72,7 @@ CREATE TABLE producto (
     catcod         INT NOT NULL,
     prodprecio     DECIMAL(10,2) NOT NULL,
     prodstock      INT NOT NULL DEFAULT 0,
+    prodimg        VARCHAR(255) NULL,
     prodest        VARCHAR(10) NOT NULL DEFAULT 'ACT',
     prodfching     DATETIME NOT NULL,
     FOREIGN KEY (catcod) REFERENCES categoria(catcod)

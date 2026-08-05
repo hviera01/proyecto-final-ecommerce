@@ -65,7 +65,8 @@ class Product extends PrivateController
                 trim($_POST["proddet"] ?? ""),
                 intval($_POST["catcod"] ?? 0),
                 floatval($_POST["prodprecio"] ?? 0),
-                intval($_POST["prodstock"] ?? 0)
+                intval($_POST["prodstock"] ?? 0),
+                $this->uploadImage()
             );
         } elseif ($this->mode === "UPD") {
             ProductsDao::updateProduct(
@@ -74,13 +75,34 @@ class Product extends PrivateController
                 trim($_POST["proddet"] ?? ""),
                 intval($_POST["catcod"] ?? 0),
                 floatval($_POST["prodprecio"] ?? 0),
-                intval($_POST["prodstock"] ?? 0)
+                intval($_POST["prodstock"] ?? 0),
+                $this->uploadImage()
             );
         } elseif ($this->mode === "DEL") {
             ProductsDao::deactivateProduct(intval($this->product["prodcod"]));
         }
 
         $this->redirect("Products_Products");
+    }
+
+    private function uploadImage(): ?string
+    {
+        if (!isset($_FILES["prodimg"]) || $_FILES["prodimg"]["error"] !== UPLOAD_ERR_OK) {
+            return null;
+        }
+
+        $allowed = ["jpg" => "image/jpeg", "jpeg" => "image/jpeg", "png" => "image/png", "webp" => "image/webp"];
+        $ext = strtolower(pathinfo($_FILES["prodimg"]["name"], PATHINFO_EXTENSION));
+
+        if (!isset($allowed[$ext]) || $_FILES["prodimg"]["size"] > 3 * 1024 * 1024) {
+            return null;
+        }
+
+        $filename = uniqid("prod_", true) . "." . $ext;
+        $destination = __DIR__ . "/../../../public/img/productos/" . $filename;
+        move_uploaded_file($_FILES["prodimg"]["tmp_name"], $destination);
+
+        return $filename;
     }
 
     private function setParamsToDataView(): void
@@ -97,6 +119,11 @@ class Product extends PrivateController
         $this->viewData["proddet"] = $this->product["proddet"] ?? "";
         $this->viewData["prodprecio"] = $this->product["prodprecio"] ?? "";
         $this->viewData["prodstock"] = $this->product["prodstock"] ?? "";
+        $this->viewData["prodimg"] = $this->product["prodimg"] ?? "";
+        $this->viewData["hasImage"] = !empty($this->product["prodimg"]);
+        $this->viewData["placeholderLetter"] = strtoupper(substr((string) ($this->product["proddsc"] ?? "?"), 0, 1));
+        $this->viewData["placeholderClass"] = "ph-" . ((int) ($this->product["catcod"] ?? 0) % 4);
+        $this->viewData["canEditImage"] = in_array($this->mode, ["INS", "UPD"], true);
 
         $selectedCatcod = intval($this->product["catcod"] ?? 0);
         $categorias = ProductsDao::getCategories();

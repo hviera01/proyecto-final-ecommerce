@@ -1,7 +1,19 @@
 <h2>{{modeTitle}}</h2>
 
-<div class="panel">
-<form method="post" action="index.php?page=Products_Product">
+<div class="panel panel-producto">
+
+{{ifnot isInsert}}
+<div class="producto-foto-grande">
+{{if hasImage}}
+<img src="public/img/productos/{{prodimg}}" alt="{{proddsc}}">
+{{endif hasImage}}
+{{ifnot hasImage}}
+<div class="producto-img-placeholder {{placeholderClass}}">{{placeholderLetter}}</div>
+{{endifnot hasImage}}
+</div>
+{{endifnot isInsert}}
+
+<form method="post" action="index.php?page=Products_Product" enctype="multipart/form-data">
 <input type="hidden" name="mode" value="{{mode}}">
 {{ifnot isInsert}}
 <input type="hidden" name="prodcod" value="{{prodcod}}">
@@ -31,6 +43,13 @@
   <label>Stock</label><br>
   <input type="number" name="prodstock" value="{{prodstock}}" {{readonly}} required>
 </p>
+
+{{if canEditImage}}
+<p>
+  <label>Foto del producto</label><br>
+  <input type="file" name="prodimg" accept=".jpg,.jpeg,.png,.webp">
+</p>
+{{endif canEditImage}}
 
 {{if showCommitBtn}}
 {{ifnot isDelete}}
