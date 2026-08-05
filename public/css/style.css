@@ -1,0 +1,314 @@
+:root {
+    --bg: #f6f3ec;
+    --panel: #ffffff;
+    --ink: #241f1a;
+    --muted: #746c5e;
+    --line: #ddd4c2;
+    --accent: #c1592b;
+    --accent-dark: #9a4520;
+    --ok: #33623c;
+    --ok-bg: #e7efe4;
+    --err: #9c3524;
+    --err-bg: #f6e8e2;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--ink);
+    background-color: var(--bg);
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: var(--accent-dark);
+}
+
+h2 {
+    font-size: 20px;
+    margin: 0 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--line);
+}
+
+h3 {
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    margin: 22px 0 10px;
+}
+
+.cabecera {
+    background-color: var(--ink);
+    color: var(--bg);
+    padding: 16px 20px 12px;
+    border-bottom: 3px solid var(--accent);
+}
+
+.nombre-negocio {
+    font-size: 21px;
+    letter-spacing: 0.01em;
+}
+
+.nombre-negocio strong {
+    color: var(--accent);
+}
+
+.eslogan {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #b7ae9d;
+    margin-top: 2px;
+}
+
+.usuario-actual {
+    float: right;
+    font-size: 13px;
+    color: #cfc7b6;
+    margin-top: 4px;
+}
+
+.menu {
+    background-color: var(--panel);
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--line);
+}
+
+.menu a {
+    margin-right: 22px;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 14px;
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+}
+
+.menu a:hover {
+    border-bottom-color: var(--accent);
+}
+
+.contenido {
+    padding: 24px 20px 10px;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.panel {
+    background-color: var(--panel);
+    border: 1px solid var(--line);
+    padding: 20px;
+}
+
+.panel-angosto {
+    background-color: var(--panel);
+    border: 1px solid var(--line);
+    padding: 24px;
+    max-width: 380px;
+    margin: 10px auto 0;
+}
+
+.pie {
+    text-align: center;
+    padding: 16px;
+    color: var(--muted);
+    border-top: 1px solid var(--line);
+    margin-top: 40px;
+    font-size: 12px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 16px;
+    background-color: var(--panel);
+}
+
+th, td {
+    border: 1px solid var(--line);
+    padding: 9px 8px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+th {
+    background-color: var(--bg);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+}
+
+.precio {
+    font-family: "Consolas", "Courier New", monospace;
+    font-weight: bold;
+}
+
+.grid-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+    margin-bottom: 10px;
+}
+
+.tarjeta-producto {
+    background-color: var(--panel);
+    border: 1px solid var(--line);
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tarjeta-producto:hover {
+    border-color: var(--accent);
+}
+
+.categoria-tag {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-bottom: 4px;
+}
+
+.producto-nombre {
+    font-weight: bold;
+    margin-bottom: 8px;
+    flex-grow: 1;
+}
+
+.producto-nombre a {
+    color: var(--ink);
+    text-decoration: none;
+}
+
+.producto-nombre a:hover {
+    color: var(--accent-dark);
+}
+
+.producto-precio {
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 17px;
+    font-weight: bold;
+    color: var(--accent-dark);
+}
+
+.producto-stock {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 10px;
+}
+
+.acciones-producto {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.boton, button, .acciones-producto a {
+    display: inline-block;
+    font-family: inherit;
+    font-size: 13px;
+    padding: 7px 14px;
+    border: 1px solid var(--ink);
+    background-color: transparent;
+    color: var(--ink);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.boton:hover, button:hover, .acciones-producto a:hover {
+    background-color: var(--ink);
+    color: var(--bg);
+}
+
+.boton-principal, button[type="submit"] {
+    background-color: var(--accent);
+    border-color: var(--accent-dark);
+    color: #ffffff;
+}
+
+.boton-principal:hover, button[type="submit"]:hover {
+    background-color: var(--accent-dark);
+    border-color: var(--accent-dark);
+    color: #ffffff;
+}
+
+.enlace-nuevo {
+    display: inline-block;
+    margin-bottom: 16px;
+}
+
+label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+}
+
+input, select {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 8px;
+    border: 1px solid var(--line);
+    background-color: var(--panel);
+    color: var(--ink);
+    width: 100%;
+    max-width: 320px;
+    margin-top: 3px;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+input[readonly] {
+    background-color: var(--bg);
+    color: var(--muted);
+}
+
+.badge {
+    display: inline-block;
+    padding: 2px 9px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border: 1px solid;
+}
+
+.badge-ok {
+    color: var(--ok);
+    border-color: var(--ok);
+    background-color: var(--ok-bg);
+}
+
+.badge-err {
+    color: var(--err);
+    border-color: var(--err);
+    background-color: var(--err-bg);
+}
+
+.mensaje-error {
+    color: var(--err);
+    border-left: 3px solid var(--err);
+    padding: 10px 12px;
+    background-color: var(--err-bg);
+    margin-bottom: 16px;
+}
+
+.mensaje-ok {
+    color: var(--ok);
+    border-left: 3px solid var(--ok);
+    padding: 10px 12px;
+    background-color: var(--ok-bg);
+    margin-bottom: 16px;
+}
