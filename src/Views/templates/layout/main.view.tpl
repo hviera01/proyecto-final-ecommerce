@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>{{pageTitle}}</title>
-<link rel="stylesheet" href="public/css/style.css">
+<link rel="stylesheet" href="public/css/style.css?v=2">
 </head>
 <body>
 
