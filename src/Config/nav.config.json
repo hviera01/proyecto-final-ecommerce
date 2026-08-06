@@ -1,0 +1,36 @@
+{
+  "public": [
+    {
+      "id": "Menu_SignIn",
+      "nav_url": "index.php?page=Sec_Login",
+      "nav_label": "Iniciar Sesion"
+    },
+    {
+      "id": "Menu_SignUp",
+      "nav_url": "index.php?page=Sec_Register",
+      "nav_label": "Crear Cuenta"
+    }
+  ],
+  "private": [
+    {
+      "id": "Menu_Products",
+      "nav_url": "index.php?page=Products_Products",
+      "nav_label": "Catalogo"
+    },
+    {
+      "id": "Menu_PaymentCheckout",
+      "nav_url": "index.php?page=Checkout_Checkout",
+      "nav_label": "Carretilla de Compra"
+    },
+    {
+      "id": "Menu_Orders",
+      "nav_url": "index.php?page=Orders_Orders",
+      "nav_label": "Mis Compras"
+    },
+    {
+      "id": "Menu_Logout",
+      "nav_url": "index.php?page=Sec_Logout",
+      "nav_label": "Cerrar Sesion"
+    }
+  ]
+}
