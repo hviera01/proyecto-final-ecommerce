@@ -16,12 +16,12 @@
 </tr>
 {{foreach orders}}
 <tr>
-  <td>{{ordencod}}</td>
-  <td>{{ordenfecha}}</td>
-  <td class="precio">L {{ordentotal}}</td>
-  <td><span class="badge {{ordenestBadge}}">{{ordenest}}</span></td>
-  <td><span class="badge {{transestBadge}}">{{transest}}</span> <span class="categoria-tag">{{transref}}</span></td>
-  <td><a href="index.php?page=Orders_Order&ordencod={{ordencod}}">Ver detalle</a></td>
+  <td data-label="No. Orden">{{ordencod}}</td>
+  <td data-label="Fecha">{{ordenfecha}}</td>
+  <td class="precio" data-label="Total">L {{ordentotal}}</td>
+  <td data-label="Estado"><span class="badge {{ordenestBadge}}">{{ordenest}}</span></td>
+  <td data-label="Transaccion"><span class="badge {{transestBadge}}">{{transest}}</span> <span class="categoria-tag">{{transref}}</span></td>
+  <td data-label="Detalle"><a href="index.php?page=Orders_Order&ordencod={{ordencod}}">Ver detalle</a></td>
 </tr>
 {{endfor orders}}
 </table>

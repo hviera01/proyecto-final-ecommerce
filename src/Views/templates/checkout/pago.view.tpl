@@ -8,7 +8,7 @@
 <table border="1" cellpadding="4" cellspacing="0">
 <tr><th>Producto</th><th>Cantidad</th><th>Subtotal</th></tr>
 {{foreach items}}
-<tr><td>{{proddsc}}</td><td>{{cantidad}}</td><td>L {{subtotal}}</td></tr>
+<tr><td data-label="Producto">{{proddsc}}</td><td data-label="Cantidad">{{cantidad}}</td><td data-label="Subtotal">L {{subtotal}}</td></tr>
 {{endfor items}}
 </table>
 <p class="producto-precio">Total a pagar: L {{total}}</p>

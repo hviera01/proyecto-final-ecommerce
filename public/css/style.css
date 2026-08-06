@@ -435,3 +435,70 @@ input[type="file"] {
     background-color: var(--ok-bg);
     margin-bottom: 16px;
 }
+
+@media (max-width: 640px) {
+    .contenido {
+        padding: 16px 14px 10px;
+    }
+
+    .cabecera {
+        padding: 16px 14px 12px;
+    }
+
+    .usuario-actual {
+        float: none;
+        display: block;
+        margin-top: 8px;
+    }
+
+    .menu {
+        padding: 8px 14px;
+    }
+
+    .menu a {
+        margin-right: 14px;
+        font-size: 13px;
+    }
+
+    .grid-productos {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead {
+        display: none;
+    }
+
+    table tr {
+        border: 1px solid var(--line);
+        background-color: var(--panel);
+        margin-bottom: 10px;
+        padding: 8px 10px;
+    }
+
+    table td {
+        border: none;
+        padding: 5px 0;
+    }
+
+    table td[data-label]::before {
+        content: attr(data-label);
+        display: block;
+        font-family: var(--font-ui, inherit);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--muted);
+        margin-bottom: 2px;
+    }
+}
+
+@media (max-width: 400px) {
+    .grid-productos {
+        grid-template-columns: 1fr;
+    }
+}

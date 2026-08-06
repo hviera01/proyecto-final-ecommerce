@@ -22,8 +22,8 @@
 </tr>
 {{foreach items}}
 <tr>
-  <td>{{proddsc}}</td>
-  <td>
+  <td data-label="Producto">{{proddsc}}</td>
+  <td data-label="Cantidad">
     <form method="post" action="index.php?page=Checkout_Checkout">
       <input type="hidden" name="mode" value="UPDATE">
       <input type="hidden" name="prodcod" value="{{prodcod}}">
@@ -31,9 +31,9 @@
       <button type="submit">Actualizar</button>
     </form>
   </td>
-  <td class="precio">L {{precio_unitario}}</td>
-  <td class="precio">L {{subtotal}}</td>
-  <td>
+  <td class="precio" data-label="Precio">L {{precio_unitario}}</td>
+  <td class="precio" data-label="Subtotal">L {{subtotal}}</td>
+  <td data-label="Acciones">
     <form method="post" action="index.php?page=Checkout_Checkout">
       <input type="hidden" name="mode" value="REMOVE">
       <input type="hidden" name="prodcod" value="{{prodcod}}">

@@ -126,6 +126,9 @@ src/Controllers/               Sec, Products, Checkout, Orders
 src/Dao/                       Acceso a datos (PDO)
 src/Utilities/                 Security, View, TemplateEngine, Nav
 src/Views/templates/           Vistas .view.tpl
-database/schema.sql            Estructura + datos semilla
+database/schema.sql            Estructura + datos semilla (uso local, incluye CREATE DATABASE)
+database/schema_hosting.sql    Mismo contenido, sin CREATE DATABASE (para hosting compartido)
 integrantes.txt                Equipo de desarrollo
 ```
+
+**¿Cual script de base de datos usar?** `schema.sql` es para instalar el proyecto en tu propia maquina (XAMPP local) — incluye `CREATE DATABASE`. `schema_hosting.sql` es el mismo esquema pero sin `CREATE DATABASE`, pensado para hosting compartido (como InfinityFree) donde la base de datos ya se crea desde el panel y solo se importan las tablas dentro de ella.
