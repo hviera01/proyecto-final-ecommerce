@@ -13,6 +13,7 @@ class ProductsDao
             "SELECT p.prodcod, p.proddsc, p.proddet, p.prodprecio, p.prodstock, p.prodimg, p.prodest, p.catcod, c.catdsc
              FROM producto p
              INNER JOIN categoria c ON c.catcod = p.catcod
+             WHERE p.prodest = 'ACT'
              ORDER BY p.proddsc"
         );
         return $stmt->fetchAll();
