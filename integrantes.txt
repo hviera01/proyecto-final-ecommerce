@@ -3,4 +3,8 @@ Negocio: Variedades Lopsi
 
 Integrantes del equipo de desarrollo:
 - Nombre completo | No. de cuenta
+- Cristopher Daniel Avila Umanzor 1709200500199
+- Henry Jose Viera Carrasco 0703200400459
+- Silvia Naomy Zambrano Alonso
+
 - (pendiente de completar)
