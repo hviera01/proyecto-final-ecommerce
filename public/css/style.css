@@ -1,19 +1,19 @@
 :root {
-    --bg: #f6f3ec;
-    --panel: #ffffff;
+    --bg: #f8f4eb;
+    --panel: #fffdf9;
     --ink: #241f1a;
     --muted: #746c5e;
-    --line: #ddd4c2;
-    --accent: #c1592b;
-    --accent-dark: #9a4520;
-    --ok: #33623c;
-    --ok-bg: #e7efe4;
-    --err: #9c3524;
-    --err-bg: #f6e8e2;
-    --ph-0: #d9c7ae;
-    --ph-1: #c7d2c2;
-    --ph-2: #d8c2c6;
-    --ph-3: #c2ccd8;
+    --line: #e7ddce;
+    --accent: #e06b2f;
+    --accent-dark: #b24f20;
+    --ok: #2d6a3d;
+    --ok-bg: #e9f7eb;
+    --err: #b33a2f;
+    --err-bg: #fcedeb;
+    --ph-0: #e8d4b3;
+    --ph-1: #d8e3cf;
+    --ph-2: #e6d5da;
+    --ph-3: #d7e0f0;
 }
 
 * {
@@ -23,11 +23,14 @@
 body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     font-size: 15px;
-    line-height: 1.5;
+    line-height: 1.6;
     color: var(--ink);
-    background-color: var(--bg);
+    background:
+        radial-gradient(circle at top left, rgba(224, 107, 47, 0.10), transparent 22%),
+        linear-gradient(135deg, #fbf6eb 0%, var(--bg) 100%);
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 a {
@@ -39,106 +42,134 @@ h2, h3 {
 }
 
 h2 {
-    font-size: 26px;
-    font-weight: normal;
+    font-size: clamp(1.45rem, 2.2vw, 1.85rem);
+    font-weight: 600;
     margin: 0 0 14px;
     padding-bottom: 10px;
     border-bottom: 2px solid var(--line);
 }
 
 h3 {
-    font-size: 18px;
-    font-weight: normal;
-    font-style: italic;
+    font-size: 1.1rem;
+    font-weight: 600;
     color: var(--ink);
     margin: 26px 0 12px;
 }
 
 .cabecera {
-    background-color: var(--ink);
-    background-image: repeating-linear-gradient(
-        135deg,
-        rgba(193, 89, 43, 0.12) 0px,
-        rgba(193, 89, 43, 0.12) 1px,
-        transparent 1px,
-        transparent 26px
-    );
+    background: linear-gradient(135deg, #2f241b 0%, #1b1510 100%);
     color: var(--bg);
-    padding: 20px 20px 14px;
+    padding: 24px clamp(1rem, 3vw, 2rem) 18px;
     border-bottom: 3px solid var(--accent);
+    position: relative;
+    overflow: hidden;
+}
+
+.cabecera::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(135deg, rgba(224, 107, 47, 0.15) 0 2px, transparent 2px 24px);
+    pointer-events: none;
 }
 
 .nombre-negocio {
+    position: relative;
+    z-index: 1;
     font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
-    font-size: 24px;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
     letter-spacing: 0.01em;
 }
 
 .nombre-negocio strong {
     color: var(--accent);
-    font-weight: normal;
+    font-weight: 700;
     font-style: italic;
 }
 
 .eslogan {
+    position: relative;
+    z-index: 1;
     display: block;
-    font-size: 11px;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: #b7ae9d;
-    margin-top: 4px;
+    letter-spacing: 0.18em;
+    color: #d9cdb9;
+    margin-top: 6px;
 }
 
 .usuario-actual {
+    position: relative;
+    z-index: 1;
     float: right;
-    font-size: 13px;
-    color: #cfc7b6;
+    font-size: 0.82rem;
+    color: #f4e8d4;
     margin-top: 4px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.12);
 }
 
 .menu {
-    background-color: var(--panel);
-    padding: 10px 20px;
+    background: rgba(255, 253, 249, 0.95);
+    padding: 12px clamp(1rem, 3vw, 2rem);
     border-bottom: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(8px);
 }
 
 .menu a {
-    margin-right: 22px;
     color: var(--ink);
     text-decoration: none;
-    font-size: 14px;
-    padding-bottom: 3px;
-    border-bottom: 2px solid transparent;
+    font-size: 0.92rem;
+    padding: 8px 12px;
+    border-radius: 999px;
+    transition: all 0.2s ease;
 }
 
 .menu a:hover {
-    border-bottom-color: var(--accent);
+    background: rgba(224, 107, 47, 0.12);
+    color: var(--accent-dark);
 }
 
 .contenido {
-    padding: 24px 20px 10px;
-    max-width: 960px;
+    padding: 1.5rem clamp(1rem, 3vw, 2rem) 3rem;
+    max-width: 1120px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
 }
 
 .hero {
-    padding: 10px 0 22px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid var(--line);
+    padding: 1.2rem 1.3rem;
+    margin-bottom: 0.2rem;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    box-shadow: 0 12px 30px rgba(36, 31, 26, 0.08);
+    background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(248,244,235,0.95));
 }
 
 .hero-kicker {
-    font-size: 11px;
+    display: inline-block;
+    font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.18em;
     color: var(--accent-dark);
+    font-weight: 700;
+    margin-bottom: 0.3rem;
 }
 
 .hero h2 {
     border-bottom: none;
     padding-bottom: 0;
-    margin: 6px 0 6px;
-    font-size: 30px;
+    margin: 4px 0 6px;
+    font-size: clamp(1.45rem, 2.4vw, 2rem);
 }
 
 .hero p {
@@ -149,7 +180,9 @@ h3 {
 .panel {
     background-color: var(--panel);
     border: 1px solid var(--line);
-    padding: 20px;
+    padding: 1.2rem;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(36, 31, 26, 0.05);
 }
 
 .panel-producto {
@@ -164,18 +197,20 @@ h3 {
 .panel-angosto {
     background-color: var(--panel);
     border: 1px solid var(--line);
-    padding: 24px;
-    max-width: 380px;
+    padding: 1.5rem;
+    max-width: 430px;
     margin: 10px auto 0;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(36, 31, 26, 0.05);
 }
 
 .pie {
     text-align: center;
-    padding: 16px;
+    padding: 18px 1rem 30px;
     color: var(--muted);
     border-top: 1px solid var(--line);
-    margin-top: 40px;
-    font-size: 12px;
+    margin-top: 20px;
+    font-size: 0.85rem;
 }
 
 table {
@@ -183,26 +218,28 @@ table {
     width: 100%;
     margin-bottom: 16px;
     background-color: var(--panel);
+    border-radius: 16px;
+    overflow: hidden;
 }
 
 th, td {
     border: 1px solid var(--line);
-    padding: 9px 8px;
+    padding: 10px 9px;
     text-align: left;
     vertical-align: middle;
 }
 
 th {
-    background-color: var(--bg);
-    font-size: 12px;
+    background: linear-gradient(135deg, #fbf2e2, #f5ead8);
+    font-size: 0.72rem;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
     color: var(--muted);
 }
 
 .precio {
     font-family: "Consolas", "Courier New", monospace;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .grid-productos {
@@ -215,13 +252,18 @@ th {
 .tarjeta-producto {
     background-color: var(--panel);
     border: 1px solid var(--line);
+    border-radius: 18px;
     display: flex;
     flex-direction: column;
-    transition: border-color 0.15s ease;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 10px 24px rgba(36, 31, 26, 0.05);
 }
 
 .tarjeta-producto:hover {
+    transform: translateY(-2px);
     border-color: var(--accent);
+    box-shadow: 0 16px 34px rgba(36, 31, 26, 0.08);
 }
 
 .tarjeta-foto {
@@ -236,7 +278,7 @@ th {
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.2s ease;
+    transition: transform 0.25s ease;
 }
 
 .tarjeta-producto:hover .tarjeta-foto img {
@@ -286,7 +328,7 @@ th {
 }
 
 .categoria-tag {
-    font-size: 11px;
+    font-size: 0.72rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--muted);
@@ -294,7 +336,7 @@ th {
 }
 
 .producto-nombre {
-    font-weight: bold;
+    font-weight: 700;
     margin-bottom: 8px;
     flex-grow: 1;
 }
@@ -310,13 +352,13 @@ th {
 
 .producto-precio {
     font-family: "Consolas", "Courier New", monospace;
-    font-size: 17px;
-    font-weight: bold;
+    font-size: 1.05rem;
+    font-weight: 700;
     color: var(--accent-dark);
 }
 
 .producto-stock {
-    font-size: 12px;
+    font-size: 0.82rem;
     color: var(--muted);
     margin-bottom: 10px;
 }
@@ -330,13 +372,15 @@ th {
 .boton, button, .acciones-producto a {
     display: inline-block;
     font-family: inherit;
-    font-size: 13px;
-    padding: 7px 14px;
+    font-size: 0.86rem;
+    padding: 8px 14px;
     border: 1px solid var(--ink);
     background-color: transparent;
     color: var(--ink);
     text-decoration: none;
     cursor: pointer;
+    border-radius: 999px;
+    transition: all 0.2s ease;
 }
 
 .boton:hover, button:hover, .acciones-producto a:hover {
@@ -350,7 +394,7 @@ th {
     color: #ffffff;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    font-size: 12px;
+    font-size: 0.78rem;
 }
 
 .boton-principal:hover, button[type="submit"]:hover {
@@ -365,27 +409,29 @@ th {
 }
 
 label {
-    font-size: 12px;
+    font-size: 0.74rem;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
     color: var(--muted);
 }
 
 input, select {
     font-family: inherit;
-    font-size: 14px;
-    padding: 8px;
+    font-size: 0.95rem;
+    padding: 9px 10px;
     border: 1px solid var(--line);
     background-color: var(--panel);
     color: var(--ink);
     width: 100%;
-    max-width: 320px;
-    margin-top: 3px;
+    max-width: 100%;
+    margin-top: 4px;
+    border-radius: 12px;
 }
 
 input:focus, select:focus {
     outline: none;
     border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(224, 107, 47, 0.12);
 }
 
 input[readonly] {
@@ -396,16 +442,16 @@ input[readonly] {
 input[type="file"] {
     border: 1px dashed var(--line);
     padding: 10px;
-    max-width: 320px;
 }
 
 .badge {
     display: inline-block;
     padding: 2px 9px;
-    font-size: 11px;
+    font-size: 0.73rem;
     text-transform: uppercase;
     letter-spacing: 0.04em;
     border: 1px solid;
+    border-radius: 999px;
 }
 
 .badge-ok {
@@ -426,6 +472,7 @@ input[type="file"] {
     padding: 10px 12px;
     background-color: var(--err-bg);
     margin-bottom: 16px;
+    border-radius: 10px;
 }
 
 .mensaje-ok {
@@ -434,35 +481,49 @@ input[type="file"] {
     padding: 10px 12px;
     background-color: var(--ok-bg);
     margin-bottom: 16px;
+    border-radius: 10px;
 }
 
-@media (max-width: 640px) {
-    .contenido {
-        padding: 16px 14px 10px;
-    }
-
+@media (max-width: 768px) {
     .cabecera {
-        padding: 16px 14px 12px;
+        padding-top: 20px;
     }
 
     .usuario-actual {
         float: none;
-        display: block;
-        margin-top: 8px;
+        display: inline-block;
+        margin: 10px 0 0;
     }
 
     .menu {
-        padding: 8px 14px;
+        padding: 10px 1rem;
     }
 
-    .menu a {
-        margin-right: 14px;
-        font-size: 13px;
+    .contenido {
+        padding: 1rem 1rem 2rem;
     }
 
     .grid-productos {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .menu {
+        gap: 0.4rem;
+    }
+
+    .menu a {
+        padding: 7px 10px;
+        font-size: 0.84rem;
+    }
+
+    .hero {
+        padding: 1rem;
+    }
+
+    .grid-productos {
+        grid-template-columns: 1fr;
     }
 
     table, thead, tbody, th, td, tr {
@@ -473,32 +534,26 @@ input[type="file"] {
         display: none;
     }
 
-    table tr {
+    tr {
         border: 1px solid var(--line);
-        background-color: var(--panel);
+        border-radius: 12px;
         margin-bottom: 10px;
-        padding: 8px 10px;
+        padding: 10px;
+        background: var(--panel);
     }
 
-    table td {
+    td {
         border: none;
-        padding: 5px 0;
+        padding: 6px 0;
     }
 
-    table td[data-label]::before {
+    td::before {
         content: attr(data-label);
-        display: block;
-        font-family: var(--font-ui, inherit);
-        font-size: 11px;
+        font-size: 0.72rem;
         text-transform: uppercase;
         letter-spacing: 0.05em;
         color: var(--muted);
-        margin-bottom: 2px;
-    }
-}
-
-@media (max-width: 400px) {
-    .grid-productos {
-        grid-template-columns: 1fr;
+        display: block;
+        margin-bottom: 3px;
     }
 }
