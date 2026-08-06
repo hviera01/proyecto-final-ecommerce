@@ -32,7 +32,15 @@
       {{endifnot ~product_DSP}}
     </div>
     <div class="producto-precio">L {{prodprecio}}</div>
-    <div class="producto-stock">Stock: {{prodstock}} &middot; {{prodest}}</div>
+    <div class="producto-stock">
+      Stock: {{prodstock}}
+      {{if agotado}}
+      <span class="badge badge-err">Agotado</span>
+      {{endif agotado}}
+      {{ifnot agotado}}
+      <span class="badge badge-ok">Disponible</span>
+      {{endifnot agotado}}
+    </div>
     <div class="acciones-producto">
       {{if ~product_UPD}}
       <a href="index.php?page=Products_Product&mode=UPD&prodcod={{prodcod}}">Editar</a>

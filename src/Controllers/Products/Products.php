@@ -33,6 +33,7 @@ class Products extends PrivateController
             $producto["hasImage"] = !empty($producto["prodimg"]);
             $producto["placeholderLetter"] = strtoupper(substr((string) $producto["proddsc"], 0, 1));
             $producto["placeholderClass"] = "ph-" . ((int) $producto["catcod"] % 4);
+            $producto["agotado"] = (int) $producto["prodstock"] <= 0;
         }
         unset($producto);
     }
