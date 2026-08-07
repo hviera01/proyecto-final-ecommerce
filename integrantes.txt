@@ -6,4 +6,4 @@ Integrantes del equipo de desarrollo:
 - Cristopher Daniel Avila Umanzor 1709200500199
 - Henry Jose Viera Carrasco 0703200400459
 - Silvia Naomy Zambrano Alonso 0210200500884
-
+- Carlos Andrés Flores Martinez 0801200406307
